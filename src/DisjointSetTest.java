@@ -5,12 +5,11 @@
 public class DisjointSetTest {
 
     static int failed = 0;
-
     static void check(boolean ok, String what) {
-        DisjointSet empty = new DisjointSet(0);
-        check(empty.count() == 0, "empty DSU has zero sets");
         System.out.println((ok ? "ok    " : "FAIL  ") + what);
-        if (!ok) failed++;
+        if (!ok) {
+            failed++;
+        }
     }
 
     public static void main(String[] args) {
@@ -40,7 +39,18 @@ public class DisjointSetTest {
         DisjointSet single = new DisjointSet(1);
         check(single.find(0) == 0, "single cell root");
         check(single.count() == 1, "single cell count");
+        DisjointSet empty = new DisjointSet(0);
+        check(empty.count() == 0, "empty DSU has zero sets");
 
+        DisjointSet groups = new DisjointSet(4);
+        groups.union(1, 2);
+        groups.union(1, 3);
+
+        int largeRoot = groups.find(1);
+
+        check(groups.union(0, 1), "single cell joins the larger group");
+        check(groups.find(0) == largeRoot, "larger group keeps its root");
+        check(groups.count() == 1, "all four cells form one group");
         System.out.println(failed == 0 ? "All checks passed." : failed + " checks failed.");
     }
 }
