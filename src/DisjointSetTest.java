@@ -51,6 +51,11 @@ public class DisjointSetTest {
         check(groups.union(0, 1), "single cell joins the larger group");
         check(groups.find(0) == largeRoot, "larger group keeps its root");
         check(groups.count() == 1, "all four cells form one group");
+        int countBefore = groups.count();
+
+        check(!groups.union(2, 3), "already connected cells are not joined again");
+        check(groups.count() == countBefore, "repeated union does not change count");
+        check(groups.connected(0, 3), "cells stay connected after repeated union");
         System.out.println(failed == 0 ? "All checks passed." : failed + " checks failed.");
     }
 }
