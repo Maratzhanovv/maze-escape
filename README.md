@@ -129,7 +129,3 @@ java -cp out Bench
 - [ ] All source files are included.
 - [ ] data/walls.txt and data/slides.txt are included.
 - [ ] output/maze.png is included.
-- [ ] README is complete and checked.
-- [ ] Work is pushed to main and the repository is public.
-- [ ] Commit history meets the assignment requirements.
-- [ ] The repository link is submitted in Moodle.

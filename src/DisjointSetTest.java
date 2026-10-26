@@ -28,19 +28,16 @@ public class DisjointSetTest {
         check(d.count() == 3, "count stays the same");
 
         DisjointSet chain = new DisjointSet(100000);
-
         for (int i = 1; i < 100000; i++) {
             chain.union(i - 1, i);
         }
-
         check(chain.connected(0, 99999), "first and last are connected");
         check(chain.count() == 1, "one set after all unions");
         check(!chain.union(0, 99999), "repeated union returns false");
 
         DisjointSet single = new DisjointSet(1);
-
-        check(single.find(0) == 0, "single cell is its own root");
-        check(single.count() == 1, "single cell forms one set");
+        check(single.find(0) == 0, "single cell root");
+        check(single.count() == 1, "single cell count");
 
         System.out.println(failed == 0 ? "All checks passed." : failed + " checks failed.");
     }
