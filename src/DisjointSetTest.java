@@ -56,6 +56,17 @@ public class DisjointSetTest {
         check(!groups.union(2, 3), "already connected cells are not joined again");
         check(groups.count() == countBefore, "repeated union does not change count");
         check(groups.connected(0, 3), "cells stay connected after repeated union");
+        DisjointSet separate = new DisjointSet(4);
+        separate.union(0, 1);
+        separate.union(2, 3);
+
+        int beforeFind = separate.count();
+
+        separate.find(1);
+        separate.find(3);
+
+        check(!separate.connected(1, 3), "different groups stay separate");
+        check(separate.count() == beforeFind, "find and connected do not change count");
         System.out.println(failed == 0 ? "All checks passed." : failed + " checks failed.");
     }
 }
