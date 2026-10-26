@@ -67,6 +67,7 @@ I ran `java tools/Check.java`. All DSU checks passed, and all 13 output lines ma
 
 I also ran the program on my personal data generated from student ID 252673. The browser page showed that I reached the exit in 25 moves, matching the program's path length.
 
+Additional DSU tests cover an empty set, a single cell, a large chain, union with itself, and repeated unions. They also check that a smaller group joins a larger group and that find and connected do not change the number of groups.
 ## Timing (Mission 7)
 
 Average time in milliseconds over 5 runs, measured with `java -cp out Bench`.
