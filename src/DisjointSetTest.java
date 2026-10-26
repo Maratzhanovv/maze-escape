@@ -7,6 +7,8 @@ public class DisjointSetTest {
     static int failed = 0;
 
     static void check(boolean ok, String what) {
+        DisjointSet empty = new DisjointSet(0);
+        check(empty.count() == 0, "empty DSU has zero sets");
         System.out.println((ok ? "ok    " : "FAIL  ") + what);
         if (!ok) failed++;
     }
